@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Weather & Air Quality Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="container">
+    <header class="app-header">
+      <h1><i class="fa-solid fa-cloud-sun-rain"></i> Weather & Air Quality Dashboard</h1>
+      <p>Real-time weather metrics & AQI worldwide</p>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <div class="search-box">
+          <input type="text" id="cityInput" placeholder="Enter city name (e.g., London, Prague, Tokyo)">
+          <button id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+        </div>
+        <div class="favorites-bar">
+          <span>Saved Cities:</span>
+          <div id="favoritesList" class="fav-tags"></div>
+        </div>
+      </section>
+
+      <section id="statusMsg" class="status-msg hidden"></section>
+
+      <section id="weatherDisplay" class="dashboard-grid hidden">
+        <!-- Main Weather Card -->
+        <div class="card weather-card">
+          <div class="card-header">
+            <h2 id="cityName">--</h2>
+            <button id="saveFavBtn" class="fav-btn"><i class="fa-regular fa-star"></i> Save City</button>
+          </div>
+          <div class="temp-box">
+            <span id="temperature">--</span>°C
+          </div>
+          <p id="weatherDesc" class="weather-desc">--</p>
+          <div class="details-grid">
+            <div><i class="fa-solid fa-droplet"></i> Humidity: <strong id="humidity">--%</strong></div>
+            <div><i class="fa-solid fa-wind"></i> Wind: <strong id="windSpeed">-- km/h</strong></div>
+          </div>
+        </div>
+
+        <!-- Air Quality Card -->
+        <div class="card aqi-card">
+          <h2><i class="fa-solid fa-wind"></i> Air Quality Index (AQI)</h2>
+          <div class="aqi-badge" id="aqiBadge">--</div>
+          <p id="aqiStatus">--</p>
+          <div class="pollutants">
+            <div><span>PM2.5:</span> <strong id="pm25">--</strong> µg/m³</div>
+            <div><span>PM10:</span> <strong id="pm10">--</strong> µg/m³</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Live Weather Dashboard Project | Academic Submission</p>
+    </footer>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
