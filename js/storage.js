@@ -2,7 +2,7 @@ const STORAGE_KEY = 'weather_saved_cities';
 
 export function getSavedCities() {
   const cities = localStorage.getItem(STORAGE_KEY);
-  return cities ? JSON.parse(cities) : ['Prague', 'London', 'Tokyo'];
+  return cities ? JSON.parse(cities) : ['Ahmedabad ', 'mumbai', 'chennai'];
 }
 
 export function saveCity(cityName) {
