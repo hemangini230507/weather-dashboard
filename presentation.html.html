@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather & Air Quality Dashboard - Presentation</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --accent: #38bdf8;
+            --text: #f8fafc;
+            --subtext: #94a3b8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;          /* Locks view to screen height */
+            margin: 0;
+            padding: 20px;
+            overflow: hidden;       /* Prevents vertical scrolling/stacking */
+        }
+
+        .slide {
+            background-color: var(--card-bg);
+            width: 100%;
+            max-width: 900px;
+            height: 520px;          /* Fixed height for all slides */
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            display: none !important; /* Hides all non-active slides */
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #334155;
+        }
+
+        .slide.active {
+            display: flex !important; /* Shows ONLY the active slide */
+        }
+
+        h1 { font-size: 2.2rem; color: var(--accent); margin-bottom: 10px; }
+        h2 { font-size: 1.8rem; color: var(--accent); margin-bottom: 20px; }
+        p, li { font-size: 1.15rem; line-height: 1.6; color: var(--text); }
+        ul { margin-left: 25px; margin-top: 15px; }
+        li { margin-bottom: 12px; }
+
+        .details-grid {
+            display: flex;
+            justify-content: space-between;
+            text-align: left;
+            margin-top: 35px;
+            padding: 20px;
+            background-color: rgba(15, 23, 42, 0.5);
+            border-radius: 10px;
+            border: 1px solid #334155;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+            color: var(--subtext);
+            font-size: 0.9rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: var(--accent);
+            color: #0f172a;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        button:hover { opacity: 0.9; transform: translateY(-2px); }
+
+        .code-box {
+            background-color: #0f172a;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #7dd3fc;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Slide 1: Title & Info -->
+    <div class="slide active">
+        <div>
+            <h1 style="text-align: center;">🌤️ Weather & Air Quality Dashboard</h1>
+            <p style="color: var(--subtext); font-size: 1.25rem; text-align: center;">
+                A Real-Time Single-Page Web Application
+            </p>
+
+            <div class="details-grid">
+                <div>
+                    <p style="color: var(--accent); font-weight: bold; margin-bottom: 5px;">Submitted By:</p>
+                    <p><strong>Name:</strong> Hemangini</p>
+                    <p><strong>Roll No:</strong> 230507</p>
+                    <p><strong>Degree:</strong> Bachelor of Computer Applications (BCA)</p>
+                </div>
+                
+                <div style="text-align: right;">
+                    <p style="color: var(--accent); font-weight: bold; margin-bottom: 5px;">Guided By:</p>
+                    <p><strong>Guide Name:</strong> [Guide Name]</p>
+                    <p>Dept. of Computer Science</p>
+                    <p>[College Name]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <span>Slide 1 of 6</span>
+            <span>Academic Year 2025–2026</span>
+        </div>
+    </div>
+
+    <!-- Slide 2: Objective -->
+    <div class="slide">
+        <div>
+            <h2>🎯 Project Objective</h2>
+            <ul>
+                <li>Build a responsive single-page application (SPA) for real-time weather tracking.</li>
+                <li>Fetch accurate weather metrics (temperature, humidity, wind speed) from live REST APIs.</li>
+                <li>Display Air Quality Index (AQI) with PM2.5 and PM10 pollutant markers.</li>
+                <li>Provide persistent city bookmarking using browser <code>localStorage</code>.</li>
+            </ul>
+        </div>
+        <div class="footer">
+            <span>Slide 2 of 6</span>
+            <span>BCA Project Presentation</span>
+        </div>
+    </div>
+
+    <!-- Slide 3: Architecture -->
+    <div class="slide">
+        <div>
+            <h2>⚙️ System Architecture</h2>
+            <ul>
+                <li><strong>Frontend UI:</strong> Semantic HTML5 structure with responsive CSS Grid/Flexbox styling.</li>
+                <li><strong>API Controller (<code>js/api.js</code>):</strong> Asynchronous REST calls using ES6 <code>async/await</code>.</li>
+                <li><strong>Storage Module (<code>js/storage.js</code>):</strong> Manages saved locations locally in browser memory.</li>
+                <li><strong>App Logic (<code>js/app.js</code>):</strong> Event handling and dynamic DOM rendering.</li>
+            </ul>
+        </div>
+        <div class="footer">
+            <span>Slide 3 of 6</span>
+            <span>BCA Project Presentation</span>
+        </div>
+    </div>
+
+    <!-- Slide 4: API Code -->
+    <div class="slide">
+        <div>
+            <h2>🌐 API Integration Snippet</h2>
+            <p>Fetching weather data asynchronously using <code>async/await</code>:</p>
+            <div class="code-box">
+async function fetchWeather(lat, lon) {<br>
+&nbsp;&nbsp;const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;<br>
+&nbsp;&nbsp;const response = await fetch(url);<br>
+&nbsp;&nbsp;const data = await response.json();<br>
+&nbsp;&nbsp;return data.current_weather;<br>
+}
+            </div>
+        </div>
+        <div class="footer">
+            <span>Slide 4 of 6</span>
+            <span>BCA Project Presentation</span>
+        </div>
+    </div>
+
+    <!-- Slide 5: Deployment -->
+    <div class="slide">
+        <div>
+            <h2>🚀 Deployment & Version Control</h2>
+            <ul>
+                <li><strong>Source Code Control:</strong> Git version control pushed to GitHub.</li>
+                <li><strong>Public Repository:</strong> Fully documented with a detailed <code>README.md</code>.</li>
+                <li><strong>Live Hosting:</strong> Deployed online via <strong>GitHub Pages</strong>.</li>
+            </ul>
+        </div>
+        <div class="footer">
+            <span>Slide 5 of 6</span>
+            <span>BCA Project Presentation</span>
+        </div>
+    </div>
+
+    <!-- Slide 6: Conclusion -->
+    <div class="slide">
+        <div>
+            <h2>✨ Conclusion & Future Scope</h2>
+            <ul>
+                <li><strong>Project Outcome:</strong> Successfully meets 100% of BCA project criteria.</li>
+                <li><strong>Future Scope:</strong>
+                    <ul>
+                        <li>Add 7-day weather forecasting charts.</li>
+                        <li>Implement automatic geolocation discovery.</li>
+                        <li>Support multi-language location lookup.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p style="margin-top: 25px; font-size: 1.4rem; color: var(--accent); text-align: center;"><strong>Thank You! Any Questions?</strong></p>
+        </div>
+        <div class="footer">
+            <span>Slide 6 of 6</span>
+            <span>BCA Project Presentation</span>
+        </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="controls">
+        <button onclick="prevSlide()">❮ Previous</button>
+        <button onclick="nextSlide()">Next ❯</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard arrow navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+    </script>
+</body>
+</html>
